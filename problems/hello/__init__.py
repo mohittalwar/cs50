@@ -7,10 +7,10 @@ def exists():
 
 @check50.check(exists)
 def veronica():
-    """responds to name Emma."""
-    check50.run("python3 hello.py").stdin("Emma").stdout("Emma").exit()
+    """responds to name Ria."""
+    check50.run("python3 hello.py").stdin("Ria").stdout("Ria").exit()
 
 @check50.check(exists)
 def brian():
-    """responds to name Rodrigo."""
-    check50.run("python3 hello.py").stdin("Rodrigo").stdout("Rodrigo").exit()
+    """responds to name Zubi."""
+    check50.run("python3 hello.py").stdin("Zubi").stdout("Zubi").exit()
