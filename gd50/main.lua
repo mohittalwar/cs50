@@ -1,4 +1,5 @@
 -- main.lua: equivalent to the main() function in C.
+-- {} represents a table, equivalent to dict() in python
 
 VIRTUAL_WIDTH = 384
 VIRTUAL_HEIGHT = 216
@@ -16,7 +17,6 @@ SMALL_FONT = love.graphics.newFont(16)
 
 push = require 'push'
 
--- Table: equivalent to dict() in python
 player1 = {
     x = 10,
     y = 10,
@@ -36,7 +36,7 @@ ball = {
     dy = 0
 }
 
--- State machine: title -> serve -> play
+-- State machine: 'title' -> 'serve' -> 'play'
 gameState = 'title'
 
 function love.load()
@@ -49,10 +49,10 @@ end
 -- Update
 function love.update(dt)
     -- Move player1
-    player1.y = getY(player1.y, dt, 'w', 's')
+    player1.y = updateY(player1.y, dt, 'w', 's')
 
     -- Move player2
-    player2.y = getY(player2.y, dt, 'up', 'down')
+    player2.y = updateY(player2.y, dt, 'up', 'down')
 
     if gameState ~= 'play' then
         return
@@ -115,7 +115,7 @@ function love.draw()
 
     love.graphics.setFont(LARGE_FONT)
     love.graphics.print(player1.score, VIRTUAL_WIDTH / 2 - 36, VIRTUAL_HEIGHT / 2 - 16)
-    love.graphics.print(player2.score, VIRTUAL_WIDTH / 2 + 36, VIRTUAL_HEIGHT / 2 - 16)
+    love.graphics.print(player2.score, VIRTUAL_WIDTH / 2 + 20, VIRTUAL_HEIGHT / 2 - 16)
     love.graphics.setFont(SMALL_FONT)
 
     love.graphics.rectangle('fill', player1.x, player1.y, PADDLE_WIDTH, PADDLE_HEIGHT)
